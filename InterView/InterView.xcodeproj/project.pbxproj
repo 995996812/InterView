@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845077E521FAE493004489B6 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845077E421FAE493004489B6 /* BlockViewController.m */; };
+		845077E821FAE4A5004489B6 /* MyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 845077E721FAE4A5004489B6 /* MyObject.m */; };
 		848947A821FAABF400EE82C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 848947A721FAABF400EE82C9 /* AppDelegate.m */; };
 		848947AB21FAABF400EE82C9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848947AA21FAABF400EE82C9 /* ViewController.m */; };
 		848947AE21FAABF400EE82C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848947AC21FAABF400EE82C9 /* Main.storyboard */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		845077E321FAE493004489B6 /* BlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockViewController.h; sourceTree = "<group>"; };
+		845077E421FAE493004489B6 /* BlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
+		845077E621FAE4A5004489B6 /* MyObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyObject.h; sourceTree = "<group>"; };
+		845077E721FAE4A5004489B6 /* MyObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyObject.m; sourceTree = "<group>"; };
 		848947A321FAABF400EE82C9 /* InterView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848947A621FAABF400EE82C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		848947A721FAABF400EE82C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -95,6 +101,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		845077E221FAE48A004489B6 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				845077E321FAE493004489B6 /* BlockViewController.h */,
+				845077E421FAE493004489B6 /* BlockViewController.m */,
+				845077E621FAE4A5004489B6 /* MyObject.h */,
+				845077E721FAE4A5004489B6 /* MyObject.m */,
+			);
+			path = Block;
+			sourceTree = "<group>";
+		};
 		8489479A21FAABF400EE82C9 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +135,7 @@
 		848947A521FAABF400EE82C9 /* InterView */ = {
 			isa = PBXGroup;
 			children = (
+				845077E221FAE48A004489B6 /* Block */,
 				848947DA21FAAD6300EE82C9 /* Reflection */,
 				848947A621FAABF400EE82C9 /* AppDelegate.h */,
 				848947A721FAABF400EE82C9 /* AppDelegate.m */,
@@ -302,6 +320,8 @@
 				848947E321FAADBC00EE82C9 /* SecondViewController.m in Sources */,
 				848947AB21FAABF400EE82C9 /* ViewController.m in Sources */,
 				848947E921FAAFF200EE82C9 /* GQUserDefaults.m in Sources */,
+				845077E521FAE493004489B6 /* BlockViewController.m in Sources */,
+				845077E821FAE4A5004489B6 /* MyObject.m in Sources */,
 				848947DD21FAAD8C00EE82C9 /* LoginController.m in Sources */,
 				848947E021FAADAF00EE82C9 /* FirstViewController.m in Sources */,
 				848947E821FAAFF200EE82C9 /* GQUserDefaults+Extension.m in Sources */,

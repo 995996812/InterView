@@ -9,9 +9,11 @@
 #import "ViewController.h"
 #import "GQUserDefaults+Extension.h"
 #import "LoginController.h"
+#import "Block/BlockViewController.h"
 @interface ViewController ()
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
+@property (nonatomic, strong) UIButton *blockButton;
 @end
 
 @implementation ViewController
@@ -23,6 +25,7 @@
     
     [self.view addSubview:self.button1];
     [self.view addSubview:self.button2];
+    [self.view addSubview:self.blockButton];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotifications:) name:@"loginSuccess" object:nil];
 }
@@ -73,6 +76,12 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)clickBlockViewController:(id)sender{
+    BlockViewController *blockVC = [BlockViewController new];
+    
+    [self.navigationController pushViewController:blockVC animated:YES];
+}
+
 - (UIButton *)button1{
     if (!_button1) {
         _button1 = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 200, 50)];
@@ -91,6 +100,16 @@
         [_button2 addTarget:self action:@selector(clickSecondViewController:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button2;
+}
+
+- (UIButton *)blockButton{
+    if (!_blockButton) {
+        _blockButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 200, 200, 50)];
+        [_blockButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_blockButton setTitle:@"BlockViewController" forState:UIControlStateNormal];
+        [_blockButton addTarget:self action:@selector(clickBlockViewController:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _blockButton;
 }
 
 @end

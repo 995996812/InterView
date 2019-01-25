@@ -26,7 +26,7 @@
     
     [GQUserDefaults standardUserDefaults].isLogin = YES;
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess"
                                                         object:nil

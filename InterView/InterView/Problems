@@ -1,5 +1,29 @@
 1、说一下OC的反射机制；
+   运行时选择创建哪个实例，并动态选择调用哪个方法
 2、block的实质是什么？有几种block？分别是怎样产生的？
+struct Block_descriptor {
+unsigned long int reserved;
+unsigned long int size;
+void (*copy)(void *dst, void *src);
+void (*dispose)(void *);
+};
+
+struct Block_layout {
+void *isa;
+int flags;
+int reserved;
+void (*invoke)(void *, ...);
+struct Block_descriptor *descriptor;
+/* Imported variables. */
+
+Clang（LLVM编译器）将含有Block语法的源代码转换为我们可读源代码的功能。通过“-rewrite-objc”选项就能将含有Block语法的源代码变换为C++的源代码（本质是使用了struct结构的C语言源代码）
+而Block实质上就是Objective-C对象;
+根据isa指针，block一共有3种类型的block
+
+_NSConcreteGlobalBlock 全局静态
+_NSConcreteStackBlock 保存在栈中，出函数作用域就销毁
+_NSConcreteMallocBlock 保存在堆中，retainCount == 0销毁而ARC和MRC中，还略有不同;
+
 3、__block修饰的变量为什么能在block里面能改变其值？
 4、说一下线程之间的通信。
 5、你们应用的崩溃率是多少？
