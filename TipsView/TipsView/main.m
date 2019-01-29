@@ -1,8 +1,8 @@
 //
 //  main.m
-//  InterView
+//  TipsView
 //
-//  Created by admin on 2019/1/25.
+//  Created by admin on 2019/1/28.
 //  Copyright © 2019年 admin. All rights reserved.
 //
 
@@ -11,10 +11,6 @@
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        void(^testBlock)(void) = ^(){
-            
-        };
-        testBlock();
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

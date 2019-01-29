@@ -22,12 +22,24 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self test2];
+    [self test3];
     
 }
 
 - (void)test3{
     
+    NSString * str1 = @"str1";
+    NSString * __block str2 =  str1;
+    
+    void(^testBlock)(void) =^(){
+        str2 = @"str1 - block";
+//        str2 = @"str2 - block";
+    };
+    
+    testBlock();
+
+    NSLog(@"%@",str1);
+    NSLog(@"%@",str2);
 }
 
 - (void)test2{

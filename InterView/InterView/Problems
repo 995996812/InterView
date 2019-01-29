@@ -24,8 +24,18 @@ _NSConcreteGlobalBlock 全局静态
 _NSConcreteStackBlock 保存在栈中，出函数作用域就销毁
 _NSConcreteMallocBlock 保存在堆中，retainCount == 0销毁而ARC和MRC中，还略有不同;
 
+Block的类型
+
+_NSConcreteStackBlock: 存储在栈区，需要截取变量
+_NSConcreteGlobalBlock: 1.存储在程序数据区域，2.不需要截取变量
+_NSConcreteMallocBlock: 存储在堆区
+
 3、__block修饰的变量为什么能在block里面能改变其值？
+    我们发现val变量居然变成了结构体实例__Block_byref_val_0，既在栈上生成了__Block_byref_val_0结构体实例，且初始化为10
+    找到Block下面的val变量，拿出val变量的__forwarding指向的val变量，拿出val变量下的val值赋值。如果Block此时在栈区，那么__forwarding指向val变量自己。
+    copy到堆后：__forwarding指向堆区的val变量
 4、说一下线程之间的通信。
+    
 5、你们应用的崩溃率是多少？
 6、说一下hash算法。
 7、NSDictionary的实现原理是什么？
