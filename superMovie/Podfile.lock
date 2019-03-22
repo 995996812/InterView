@@ -1,0 +1,49 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Masonry (1.1.0)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
+  - SuperPlayer (2.3.4):
+    - AFNetworking (~> 3.1)
+    - Masonry (~> 1.1.0)
+    - SDWebImage (~> 4.4.0)
+    - SuperPlayer/Player (= 2.3.4)
+  - SuperPlayer/Player (2.3.4):
+    - AFNetworking (~> 3.1)
+    - Masonry (~> 1.1.0)
+    - SDWebImage (~> 4.4.0)
+
+DEPENDENCIES:
+  - SuperPlayer
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - Masonry
+    - SDWebImage
+    - SuperPlayer
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SuperPlayer: 49e4ae2eab9aa647e304cd4c468856261596ad28
+
+PODFILE CHECKSUM: b0b85b4902652ffbb8d8204c9bcce11009cae9af
+
+COCOAPODS: 1.5.0
