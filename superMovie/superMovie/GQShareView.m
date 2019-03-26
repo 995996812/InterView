@@ -132,9 +132,6 @@
                                                                   @"拷贝链接"]];
 //    }
     
-    
-
-    
     if (_imageNameList.count <= 3) {
         
         self.shareViewHeightConstraint.constant = 125;

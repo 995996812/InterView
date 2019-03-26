@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "GQShareView.h"
 #import <Masonry.h>
+#import "GQUpdateAlert.h"
 @interface ViewController ()
 
 @property (nonatomic, strong)GQShareView *shareView;
@@ -29,6 +30,10 @@
     
 }
 
+- (IBAction)versionUpdate:(UIButton *)sender {
+    
+        [GQUpdateAlert showUpdateAlertWithVersion:@"1.0.0" Descriptions:@[@"1.xxxxxxxxxx",@"2.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]];
+}
 
 
 @end

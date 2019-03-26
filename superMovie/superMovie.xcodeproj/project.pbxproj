@@ -21,6 +21,7 @@
 		842FE15422437FF300FF9E52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FE15322437FF300FF9E52 /* main.m */; };
 		842FE15E22437FF300FF9E52 /* superMovieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FE15D22437FF300FF9E52 /* superMovieTests.m */; };
 		842FE16922437FF300FF9E52 /* superMovieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FE16822437FF300FF9E52 /* superMovieUITests.m */; };
+		848CA922224A0ADF001246F7 /* GQUpdateAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CA921224A0ADF001246F7 /* GQUpdateAlert.m */; };
 		D47B04412B79BEEA2941C67E /* libPods-superMovieUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9592858E0ED5E5ADADA99ED3 /* libPods-superMovieUITests.a */; };
 		EE364E6212451A265895E021 /* libPods-superMovieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAACF9C3AB1763A3073AFFEE /* libPods-superMovieTests.a */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,8 @@
 		842FE16422437FF300FF9E52 /* superMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = superMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842FE16822437FF300FF9E52 /* superMovieUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = superMovieUITests.m; sourceTree = "<group>"; };
 		842FE16A22437FF300FF9E52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848CA920224A0ADF001246F7 /* GQUpdateAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GQUpdateAlert.h; sourceTree = "<group>"; };
+		848CA921224A0ADF001246F7 /* GQUpdateAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GQUpdateAlert.m; sourceTree = "<group>"; };
 		889A020BB149CE4BACA91BAE /* Pods-superMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-superMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-superMovie/Pods-superMovie.release.xcconfig"; sourceTree = "<group>"; };
 		8B51BCE474E264D104B700AC /* Pods-superMovieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-superMovieUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-superMovieUITests/Pods-superMovieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		93F63CDE974E2853867A0106 /* Pods-superMovieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-superMovieUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-superMovieUITests/Pods-superMovieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				842FE14522437FF100FF9E52 /* AppDelegate.m */,
 				842FE14722437FF100FF9E52 /* ViewController.h */,
 				842FE14822437FF100FF9E52 /* ViewController.m */,
+				848CA920224A0ADF001246F7 /* GQUpdateAlert.h */,
+				848CA921224A0ADF001246F7 /* GQUpdateAlert.m */,
 				842C8DF92244D8EC00F939E7 /* GQShareView.h */,
 				842C8DFA2244D8EC00F939E7 /* GQShareView.m */,
 				842C8DFC2244D9E700F939E7 /* GQShareView.xib */,
@@ -406,6 +411,7 @@
 				842C8E012244F54500F939E7 /* GQShareViewCell.m in Sources */,
 				842FE14922437FF100FF9E52 /* ViewController.m in Sources */,
 				842FE15422437FF300FF9E52 /* main.m in Sources */,
+				848CA922224A0ADF001246F7 /* GQUpdateAlert.m in Sources */,
 				842C8DFB2244D8EC00F939E7 /* GQShareView.m in Sources */,
 				842FE14622437FF100FF9E52 /* AppDelegate.m in Sources */,
 			);
