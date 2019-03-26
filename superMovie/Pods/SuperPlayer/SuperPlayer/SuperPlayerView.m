@@ -158,7 +158,7 @@ static UISlider * _volumeSlider;
         [self configTXPlayer];
     } else if (playerModel.appId != 0 && playerModel.fileId != nil) {
         self.isLive = NO;
-        [self getPlayInfo:playerModel.appId withFileId:playerModel.fileId];
+        [self getPlayInfoV2];
     } else {
         NSLog(@"无播放地址");
         return;
@@ -691,8 +691,8 @@ static UISlider * _volumeSlider;
             [self.controlView playerBegin:self.playerModel isLive:YES isTimeShifting:self.isShiftPlayback isAutoPlay:YES];    //时移播放不能切码率
         }
     } else {
-        [self.vodPlayer seek:dragedSeconds];
         [self.vodPlayer resume];
+        [self.vodPlayer seek:dragedSeconds];
         [self.controlView setPlayState:YES];
     }
 }
@@ -1111,7 +1111,7 @@ static UISlider * _volumeSlider;
     }
 }
 
-- (void)controlViewConfigUpdate:(SuperPlayerView *)controlView {
+- (void)controlViewConfigUpdate:(SuperPlayerView *)controlView withReload:(BOOL)reload {
     if (self.isLive) {
         [self.livePlayer setMute:self.playerConfig.mute];
         [self.livePlayer setRenderMode:self.playerConfig.renderMode];
@@ -1121,7 +1121,7 @@ static UISlider * _volumeSlider;
         [self.vodPlayer setMute:self.playerConfig.mute];
         [self.vodPlayer setRenderMode:self.playerConfig.renderMode];
     }
-    if (self.playerConfig.hwAccelerationChanged) {
+    if (reload) {
         if (!self.isLive)
             self.startTime = [self.vodPlayer currentPlaybackTime];
         [self configTXPlayer]; // 软硬解需要重启
@@ -1305,21 +1305,26 @@ static UISlider * _volumeSlider;
     
     dispatch_async(dispatch_get_main_queue(), ^{
 
-        if (EvtID == PLAY_EVT_RCV_FIRST_I_FRAME && !self.isLoaded) {
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
-            self.isLoaded = YES;
-            [self _removeOldPlayer];
-            [self.livePlayer setupVideoWidget:CGRectZero containView:self insertIndex:0];
-            [self layoutSubviews];  // 防止横屏状态下添加view显示不全
-            self.state = StatePlaying;
-            
-            if ([self.delegate respondsToSelector:@selector(superPlayerDidStart:)]) {
-                [self.delegate superPlayerDidStart:self];
-            }
+        if (EvtID != PLAY_EVT_PLAY_PROGRESS) {
+            NSString *desc = [param description];
+            NSLog(@"%@", [NSString stringWithCString:[desc cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]);
         }
         
         if (EvtID == PLAY_EVT_PLAY_BEGIN) {
+            if (!self.isLoaded) {
+                [self setNeedsLayout];
+                [self layoutIfNeeded];
+                self.isLoaded = YES;
+                [self _removeOldPlayer];
+                [self.livePlayer setupVideoWidget:CGRectZero containView:self insertIndex:0];
+                [self layoutSubviews];  // 防止横屏状态下添加view显示不全
+                self.state = StatePlaying;
+                
+                if ([self.delegate respondsToSelector:@selector(superPlayerDidStart:)]) {
+                    [self.delegate superPlayerDidStart:self];
+                }
+            }
+            
             if (self.state == StateBuffering)
                 self.state = StatePlaying;
             [self.netWatcher loadingEndEvent];
@@ -1373,10 +1378,48 @@ static UISlider * _volumeSlider;
 }
 
 #pragma mark - Net
-- (void)getPlayInfo:(NSInteger)appid withFileId:(NSString *)fileId {
+- (NSString*)makeParamtersString:(NSDictionary*)parameters withEncoding:(NSStringEncoding)encoding
+{
+    if (nil == parameters || [parameters count] == 0)
+        return nil;
+    
+    NSMutableString* stringOfParamters = [[NSMutableString alloc] init];
+    NSEnumerator *keyEnumerator = [parameters keyEnumerator];
+    id key = nil;
+    while ((key = [keyEnumerator nextObject]))
+    {
+        [stringOfParamters appendFormat:@"%@=%@&", key, [parameters valueForKey:key]];
+    }
+    
+    // Delete last character of '&'
+    NSRange lastCharRange = {[stringOfParamters length] - 1, 1};
+    [stringOfParamters deleteCharactersInRange:lastCharRange];
+    return stringOfParamters;
+}
+
+- (void)getPlayInfoV2 {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = [NSString stringWithFormat:@"https://playvideo.qcloud.com/getplayinfo/v2/%ld/%@", appid, fileId];
+    NSString *url = [NSString stringWithFormat:@"https://playvideo.qcloud.com/getplayinfo/v2/%ld/%@", _playerModel.appId, _playerModel.fileId];
+    
+    // 防盗链参数
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if (_playerModel.timeout) {
+        [params setValue:_playerModel.timeout forKey:@"t"];
+    }
+    if (_playerModel.us) {
+        [params setValue:_playerModel.us forKey:@"us"];
+    }
+    if (_playerModel.sign) {
+        [params setValue:_playerModel.sign forKey:@"sign"];
+    }
+    if (_playerModel.exper >= 0) {
+        [params setValue:@(_playerModel.exper) forKey:@"exper"];
+    }
+    NSString *httpBodyString = [self makeParamtersString:params withEncoding:NSUTF8StringEncoding];
+    if (httpBodyString) {
+        url = [url stringByAppendingFormat:@"?%@", httpBodyString];
+    }
     
     __weak SuperPlayerView *weakSelf = self;
     SuperPlayerModel *theModel = _playerModel;
