@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GQShareViewCell : UICollectionViewCell
 
+
+- (void)configImage:(NSString *)imageName title:(NSString *)title;
 @end
 
 NS_ASSUME_NONNULL_END

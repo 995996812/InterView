@@ -22,21 +22,13 @@
 }
 - (IBAction)jump:(id)sender {
     
-    [self.view addSubview:self.shareView];
     
-    [self.shareView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
-    }];
+    GQShareView *view = [[[NSBundle mainBundle] loadNibNamed:@"GQShareView" owner:nil options:nil] lastObject];
+    
+    [view showShareView];
     
 }
 
-- (GQShareView *)shareView{
-    if (!_shareView) {
-         NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@"GQShareView" owner:nil options:nil];
-        _shareView = [nibContents lastObject];
-    }
-    return _shareView;
-}
 
 
 @end

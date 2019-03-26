@@ -16,12 +16,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuX-GJ-pLh">
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuX-GJ-pLh">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B41-wu-fA5">
-                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="667" width="375" height="200"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w3i-E4-LGG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,6 +35,9 @@
                                 <state key="normal" title="取消">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelShareview:" destination="cZR-ja-1nA" eventType="touchUpInside" id="8M9-Mn-gMX"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Z2S-5a-tc7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
@@ -48,7 +51,7 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opa-bA-yqp">
                                 <rect key="frame" x="0.0" y="159" width="375" height="1"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="mBG-Qh-XK5"/>
                                 </constraints>
@@ -79,7 +82,7 @@
                 <constraint firstItem="HuX-GJ-pLh" firstAttribute="top" secondItem="cZR-ja-1nA" secondAttribute="top" id="8aa-fH-lgx"/>
                 <constraint firstAttribute="bottom" secondItem="HuX-GJ-pLh" secondAttribute="bottom" id="Qbj-yc-nRX"/>
                 <constraint firstItem="ySJ-Lk-swU" firstAttribute="trailing" secondItem="B41-wu-fA5" secondAttribute="trailing" id="VHN-9d-NeI"/>
-                <constraint firstItem="ySJ-Lk-swU" firstAttribute="bottom" secondItem="B41-wu-fA5" secondAttribute="bottom" id="aKS-Q4-PgA"/>
+                <constraint firstItem="ySJ-Lk-swU" firstAttribute="bottom" secondItem="B41-wu-fA5" secondAttribute="bottom" constant="-200" id="aKS-Q4-PgA"/>
                 <constraint firstItem="ySJ-Lk-swU" firstAttribute="trailing" secondItem="HuX-GJ-pLh" secondAttribute="trailing" id="dOv-rK-F0O"/>
                 <constraint firstItem="HuX-GJ-pLh" firstAttribute="leading" secondItem="ySJ-Lk-swU" secondAttribute="leading" id="qbF-E2-8fy"/>
             </constraints>
@@ -87,6 +90,7 @@
             <connections>
                 <outlet property="bottomConstraint" destination="aKS-Q4-PgA" id="OY9-0O-T2c"/>
                 <outlet property="collectionView" destination="Z2S-5a-tc7" id="tQA-dC-1nx"/>
+                <outlet property="shareViewHeightConstraint" destination="h1m-qz-HFe" id="v3Q-ut-hNj"/>
             </connections>
             <point key="canvasLocation" x="-378.39999999999998" y="-109.29535232383809"/>
         </view>
