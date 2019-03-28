@@ -20,7 +20,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shareViewHeightConstraint;
 
-
 @property (nonatomic, strong)NSMutableArray * imageNameList; //分享菜单图片名字
 @property (nonatomic, strong)NSMutableArray * titleNameList; //分享菜单title
 
@@ -42,6 +41,7 @@
 }
 
 - (void)awakeFromNib{
+    
     [super awakeFromNib];
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
@@ -54,7 +54,6 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     //图片名字
-    
 //    if (如果没有安装微信) {
 //        _imageNameList =[[NSMutableArray alloc] initWithArray:@[
 //                                                                @"share_4.0_sina",
@@ -115,7 +114,7 @@
 //                                                                  @"QQ好友",
 //                                                                  @"QQ空间",
 //                                                                  @"拷贝链接"]];
-//    }else if(){
+//    }else if(都装了){
     
         _imageNameList =[[NSMutableArray alloc] initWithArray:@[@"share_4.0_wechat",
                                                                 @"share_4.0_wxfriends",
@@ -130,7 +129,10 @@
                                                                   @"QQ好友",
                                                                   @"QQ空间",
                                                                   @"拷贝链接"]];
-//    }
+    //    }else if(都没装){
+    //    _imageNameList =[[NSMutableArray alloc] initWithArray:@[@"shar_4.0_copylink"]];
+    //    _titleNameList = [[NSMutableArray alloc] initWithArray: @[@"拷贝链接"]];
+    //}
     
     if (_imageNameList.count <= 3) {
         
@@ -140,10 +142,7 @@
         self.shareViewHeightConstraint.constant = 200;
     }
     
-    
 }
-
-
 
 //MARK  - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -178,7 +177,150 @@
     }else if([title isEqualToString:@"拷贝链接"]){
         NSLog(@"拷贝链接");
     }
+    
 }
+
+/*
+ utm_source=wechat&utm_medium=voguemini_ios&utm_campaign=client_share  微信好友
+ utm_source=wechat&utm_medium=voguemini_ios&utm_campaign=client_share  微信朋友圈
+ utm_source=weibo&utm_medium=voguemini_ios&utm_campaign=client_share   新浪微博
+ utm_source=qq&utm_medium=voguemini_ios&utm_campaign=client_share      qq好友
+ utm_source=qqzone&utm_medium=voguemini_ios&utm_campaign=client_share  qq空间
+ */
+//微信好友分享
+//- (void)wechatShare{
+//
+//
+//    CNShareModel * model = [[CNShareModel alloc]init];
+//    model.weChatModel = [[CNShareWeChatModel alloc]init];
+//    model.weChatModel.weChatTitle = self.shareTitle;
+//    model.weChatModel.weChatText = self.shareDesc;
+//    model.weChatModel.weChatImage = self.shareImage;
+//    model.weChatModel.weChatThumbImage = self.shareImage;
+//    model.weChatModel.weChatUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?utm_source=wechat&utm_medium=mygq_ios&utm_campaign=client_share",self.shareUrl]];
+//    model.weChatModel.weChatPlatformSubType = SSDKPlatformSubTypeWechatSession;
+//    model.weChatModel.weChatType = SSDKContentTypeAuto;
+//    [[CNShareSDKManager shareSDKManager] shareWithCNShareModel:model.weChatModel withCompleteBlock:^(SSDKResponseState state) {
+//
+//        switch (state) {
+//            case SSDKResponseStateSuccess:
+//            {
+//                [self shareSuccess];
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
+//
+//    }];
+//}
+//
+////微信朋友圈
+//- (void)wechatFriendsShare
+//{
+//
+//    CNShareModel * model = [[CNShareModel alloc]init];
+//    model.weChatModel = [[CNShareWeChatModel alloc]init];
+//    model.weChatModel.weChatText = self.shareDesc;
+//    model.weChatModel.weChatTitle = self.shareTitle;
+//    model.weChatModel.weChatImage = self.shareImage;
+//    model.weChatModel.weChatThumbImage = self.shareImage;
+//    model.weChatModel.weChatUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?utm_source=wechat&utm_medium=mygq_ios&utm_campaign=client_share",self.shareUrl]];
+//    model.weChatModel.weChatPlatformSubType = SSDKPlatformSubTypeWechatTimeline;
+//    model.weChatModel.weChatType = SSDKContentTypeAuto;
+//    [[CNShareSDKManager shareSDKManager] shareWithCNShareModel:model.weChatModel withCompleteBlock:^(SSDKResponseState state) {
+//        switch (state) {
+//            case SSDKResponseStateSuccess:
+//            {
+//                [self shareSuccess];
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }];
+//
+//}
+//
+////新浪微博
+//- (void)sinaShare{
+//
+//    CNShareModel * model = [[CNShareModel alloc]init];
+//    model.sinaModel = [[CNShareSinaModel alloc]init];
+//    //    model.sinaModel.sinaTitle = self.shareTitle;
+//    model.sinaModel.sinaText = [NSString stringWithFormat:@"%@:%@?utm_source=weibo&utm_medium=mygq_ios&utm_campaign=client_share",self.shareTitle, self.shareUrl];
+//    //    model.sinaModel.sinaText = self.shareDesc;
+//    model.sinaModel.sinaImage = self.shareImage;
+//    //    model.sinaModel.sinaUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?utm_source=gq24&utm_medium=app&utm_content=weibo&utm_campaign=ios",self.shareUrl]];
+//    [[CNShareSDKManager shareSDKManager] shareWithCNShareModel:model.sinaModel withCompleteBlock:^(SSDKResponseState state) {
+//        switch (state) {
+//            case SSDKResponseStateSuccess:
+//            {
+//                [self shareSuccess];
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }];
+//
+//}
+//
+////qq好友
+//- (void)qqFirendsShare{
+//
+//    CNShareModel * model = [[CNShareModel alloc]init];
+//    model.qqModel = [[CNShareQQModel alloc]init];
+//    model.qqModel.qqTitle = self.shareTitle;
+//    model.qqModel.qqText = self.shareDesc;
+//    model.qqModel.qqImage = self.shareImage;
+//    model.qqModel.qqUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?utm_source=qq&utm_medium=mygq_ios&utm_campaign=client_share",self.shareUrl]];
+//    model.qqModel.qqPlatformSubType = SSDKPlatformSubTypeQQFriend;
+//    model.qqModel.qqType = SSDKContentTypeAuto;
+//    [[CNShareSDKManager shareSDKManager] shareWithCNShareModel:model.qqModel withCompleteBlock:^(SSDKResponseState state) {
+//        switch (state) {
+//            case SSDKResponseStateSuccess:
+//            {
+//                [self shareSuccess];
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }];
+//
+//}
+////qq空间
+//- (void)qqSpaceShare{
+//
+//    CNShareModel * model = [[CNShareModel alloc] init];
+//    model.qqModel = [[CNShareQQModel alloc] init];
+//    model.qqModel.qqTitle = self.shareTitle;
+//    model.qqModel.qqText = self.shareDesc;
+//    model.qqModel.qqImage = self.shareImage;
+//    //http://m.gq.com.cn/digital/news_1714d61677046a61.html?utm_source=gq24&utm_medium=app&utm_content=wechat&utm_campaign=ios
+//    model.qqModel.qqUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?utm_source=qqzone&utm_medium=mygq_ios&utm_campaign=client_share",self.shareUrl]];
+//    model.qqModel.qqPlatformSubType = SSDKPlatformSubTypeQZone;
+//    model.qqModel.qqType = SSDKContentTypeAuto;
+//    [[CNShareSDKManager shareSDKManager] shareWithCNShareModel:model.qqModel withCompleteBlock:^(SSDKResponseState state) {
+//        switch (state) {
+//            case SSDKResponseStateSuccess:
+//            {
+//                [self shareSuccess];
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }];
+//}
+
+
 
 //取消分享视图
 - (IBAction)cancelShareview:(UIButton *)sender {
@@ -206,5 +348,7 @@
     });
 
 }
+
+
 
 @end

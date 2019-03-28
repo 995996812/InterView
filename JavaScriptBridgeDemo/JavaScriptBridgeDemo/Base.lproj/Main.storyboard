@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lv6-VY-h6X">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwj-SS-jQo">
+                                <rect key="frame" x="50" y="722" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hc5-rR-UXx"/>
+                                    <constraint firstAttribute="width" constant="100" id="yb0-Wp-sed"/>
+                                </constraints>
+                                <state key="normal" title="渲染页面"/>
+                                <connections>
+                                    <action selector="renderPageHtml:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eWo-QB-vxA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lv6-VY-h6X" secondAttribute="trailing" id="JDa-eG-fyZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lv6-VY-h6X" secondAttribute="bottom" id="LIC-ZL-1Hf"/>
+                            <constraint firstItem="Lv6-VY-h6X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Q1X-62-LHe"/>
+                            <constraint firstItem="Lv6-VY-h6X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zz2-tk-Asp"/>
+                            <constraint firstItem="pwj-SS-jQo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="h4s-By-JeX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pwj-SS-jQo" secondAttribute="bottom" constant="100" id="lWj-9l-SGZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Lv6-VY-h6X" id="hIi-Rf-GsW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
