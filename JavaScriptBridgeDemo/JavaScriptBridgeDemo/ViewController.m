@@ -33,9 +33,7 @@
     
     //表单填写完成回来的回调
     [self.bridge registerHandler:@"formCompletion" handler:^(id data, WVJBResponseCallback responseCallback) {
-        
         NSLog(@"表单填写完成回来的数据 %@", data);
-        
     }];
     
     [self.bridge registerHandler:@"agreeResult" handler:^(id data, WVJBResponseCallback responseCallback) {
@@ -48,12 +46,13 @@
 - (IBAction)renderPageHtml:(UIButton *)sender {
     
     
-    [self.bridge callHandler:@"sendRenderData" data:@{@"11":@"22",
-                                                      @"33":@"44",
-                                                      @"55":@"66"
-                                                      } responseCallback:^(id responseData) {
-                                                          NSLog(@"给JS发送过去的JSON数据  %@",responseData);
-                                                      }];
+    [self.bridge callHandler:@"sendRenderData"
+                        data:@{@"11":@"22",
+                               @"33":@"44",
+                               @"55":@"66"}
+            responseCallback:^(id responseData) {
+                NSLog(@"给JS发送过去的JSON数据  %@",responseData);
+            }];
 }
 
 

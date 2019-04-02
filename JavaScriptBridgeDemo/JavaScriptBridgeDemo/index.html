@@ -17,6 +17,7 @@
 				document.documentElement.appendChild(WVJBIframe);
 				setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
 			}
+            //与Objc交互需要注册的协议 写在这个方法里
             setupWebViewJavascriptBridge(function(bridge) {
                         
                                          bridge.registerHandler('sendRenderData',
