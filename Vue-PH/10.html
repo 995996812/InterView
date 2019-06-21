@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="example">
+    <p>original message: "{{ message }}"</p>
+    <p>computed reversed message "{{ reversedMessage }}"</p>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#example",
+        data: {
+            message: 'hello'
+        },
+        computed: {
+            reversedMessage : function(){
+                return this.message.split('').reverse().join('')
+            }
+        }
+        // methods: {
+        //     reversedMessage: function(){
+        //         return this.message.split('').reverse().join('')
+        //     }
+        // }
+    })
+
+    console.log(vm.reversedMessage)
+    vm.message = 'Goodbye'
+    console.log(vm.reversedMessage)
+</script>

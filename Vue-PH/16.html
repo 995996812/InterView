@@ -1,0 +1,18 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-16">
+    <h1 v-if="awesome">Vue is awesome!</h1>
+    <h1 v-else>oh no</h1>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-16",
+        data: {
+            awesome: false   
+        }
+    })
+</script>

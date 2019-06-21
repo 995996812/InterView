@@ -1,0 +1,23 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-8">
+	<p>{{ foo }}</p>
+	<!-- 因为Object.freeze(obj)的原因,这里将不在运行 -->
+	<button v-on:click="foo = 'baz'">change it</button>
+</div>
+
+<script>
+	var obj = {
+		foo: 'bar'
+	}
+	//阻止修改现有的属性，也意味着响应系统无法再追踪变化
+	Object.freeze(obj)
+	var vm = new Vue({
+		el: "#app-8",
+		data: obj
+	})
+</script>

@@ -1,0 +1,51 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-13">
+        <!-- <div
+        class="static"
+        v-bind:class="{ active: isActive, 'text-danger': hasError }"
+      ></div> -->
+      <!-- <div class="static" v-bind:class="classObject"></div> -->
+      <!-- <div class="static" v-bind:class="[activeClass, errorClass]"></div> -->
+      <!-- <div class="static" v-bind:class="[isActive ? activeClass : '', errorClass]"></div> -->
+      <div v-bind:class="[{active: isActive}, errorClass]"></div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-13",
+        // data: {
+        //     isActive: true,
+        //     hasError: false
+        // }
+        // data: {
+        //     classObject: {
+        //         active: true,
+        //         'text-danger': false
+        //     }
+        // }
+
+        // data: {
+        //     isActive: true,
+        //     error: null
+        // },
+        // computed: {
+        //     classObject: function() {
+        //         return{
+        //             active: this.isActive && !this.error,
+        //             'text-danger': this.error && this.error.type === 'fatal'
+        //         }
+        //     }
+        // }
+
+        data: {
+            isActive :true,
+            activeClass: 'active',
+            errorClass: 'text-danger'
+        }
+    })
+
+</script>

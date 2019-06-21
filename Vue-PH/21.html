@@ -1,0 +1,30 @@
+<head>
+    <meta charset="utf-8">
+    <title>v-for里使用对象</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-21">
+    <ul>
+        <!-- 第一个参数为值  第二个参数为key 第三个参数是下标值 -->
+        <li v-for="(value,name,index) in object" v-bind:key="value.id">
+           {{index}} - {{name}} : {{value}}
+        </li>
+    </ul>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-21",
+        data: {
+            object: {
+                title: 'How to do lists in vue',
+                author: 'wang',
+                time: '2019-6-18'
+            }
+        }
+    })
+
+    
+</script>

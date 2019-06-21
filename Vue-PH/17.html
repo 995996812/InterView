@@ -1,0 +1,43 @@
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-17">
+    <template v-if="true">
+        <h1>Title</h1>
+        <p>第一段</p>
+        <p>第二段</p>
+    </template>
+
+    <div v-if="Math.random() > 0.5">
+        Now you see me
+    </div>
+    <div v-else>
+        Now you don't
+    </div>
+
+
+    <div v-if="type === 'A'">
+        AAAAAAAAAAAAAA
+    </div>
+    <div v-else-if="type === 'B'">
+        BBBBBBBBBBBB
+    </div>
+    <div v-else-if="type === 'C'">
+        CCCCCCCCCCC
+    </div>
+    <div v-else>
+        ABCABCABC
+    </div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-17",
+        data: {
+            type: 'A'
+        }
+    })
+</script>

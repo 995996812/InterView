@@ -1,0 +1,31 @@
+<head>
+    <meta charset="utf-8">
+    <title>对象变更检测注意事项</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-24">
+    <ul>
+        <li v-for="info in userInfo">
+            {{info}}
+        </li>
+    </ul>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-24",
+        data: {
+            userInfo: {
+                name: 'jess'
+            }
+        }
+    })
+
+    // vm.$set(vm.userInfo, 'age', 27)
+    //批量添加元素
+   vm.userInfo = Object.assign({},vm.userInfo, {
+        age: 28,
+        favColor: 'green'
+    })
+</script>

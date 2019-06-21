@@ -1,0 +1,23 @@
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+</div>
+
+<script>
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+      	todos: [
+          {text: '1111111'},
+          {text: '2222222'},
+          {text: '3333333'}
+        ]
+      }
+    })
+    //app4.todos.push({ text: '4444444' }) 添加数据操作
+</script>

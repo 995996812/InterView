@@ -1,0 +1,39 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-18">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+    </template>
+
+    <button type="button" @click="clickMethod">click</button>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-18",
+        data: {
+            loginType: 'username'
+        },
+        methods: {
+            clickMethod() {
+                // console.log('11111')
+                if (this.loginType === 'username') {
+                    this.loginType = 'email'
+                } else {
+                    this.loginType = 'username'
+                }
+            }
+        }
+    })
+
+   
+    
+</script>

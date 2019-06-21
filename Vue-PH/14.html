@@ -1,0 +1,22 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-14">
+    <my-componet class="baz boo"></my-componet>
+</div>
+
+<script>
+
+    Vue.component('my-componet', {
+        template: '<p class="foo bar">Hi</p>'
+    })
+
+    var vm = new Vue({
+        el: "#app-14"
+    })
+
+</script>
+
+

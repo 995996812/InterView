@@ -1,0 +1,38 @@
+<head>
+    <meta charset="utf-8">
+    <title>列表渲染</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-20">
+    <ul>
+        <li v-for="(item,index) in items">
+        {{parentMessage}} - {{index}} - {{item.message}}
+        </li>
+    </ul>
+
+    <!--  也可以用 of 替代 in 作为分隔符，因为它更接近 JavaScript 迭代器的语法：-->
+    <ul>
+        <li v-for="item of items">
+            {{item.message}}
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-20",
+        data: {
+            parentMessage: 'parent',
+            items: [
+                {message: 'Foo'},
+                {message: 'Bar'}
+            ]
+        }
+    })
+
+    vm.items = vm.items.filter(function(item){
+        return item.message.match(/Foo/)
+    })
+</script>

@@ -1,0 +1,27 @@
+<head>
+    <meta charset="utf-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<div id="app-27">
+    <button v-on:click="greet">greet</button>
+    <!-- <div>{{counter}}</div> -->
+</div>
+
+<script>
+    new Vue({
+        el: "#app-27",
+        data: {
+            // counter: 0,
+            name: 'Vue.js'
+        },
+        methods: {
+            greet: function(event){
+                // this.counter += 1;
+                alert('hello' + this.name + '!')
+                // if(event){
+                //     alert(event.target.tagName)
+                // }
+            }
+        }
+    })
+</script>

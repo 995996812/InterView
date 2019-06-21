@@ -1,0 +1,21 @@
+<head>
+    <title>绑定内联样式</title>
+    <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-15">
+    <p v-bind:style="styleObject">内联样式</p>
+</div>
+
+<script>
+    var vm  = new Vue({
+        el: "#app-15",
+        data: {
+            styleObject: {
+                color: 'green',
+                fontSize: '30px'
+            }
+        }
+    })
+</script>

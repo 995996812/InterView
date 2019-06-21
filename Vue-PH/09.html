@@ -1,0 +1,27 @@
+<head>
+        <meta charset="UTF-8">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<div id="app-9">
+    <p>{{foo.split('').reverse().join('')}}</p>
+    <a @click="dosomething">...</a>
+    <div v-on:click="dosomethingto">打打</div>
+</div>
+
+<script>
+    var obj = {
+		foo: "222"
+	}
+    var vm = new Vue({
+        el: "#app-9",
+        data: obj
+    })
+    function dosomething() {
+        console.log("111111");
+    }
+
+    function dosomethingto() {
+        console.log("22222222");
+    }
+</script>
+
