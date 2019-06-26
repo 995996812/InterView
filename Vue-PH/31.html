@@ -1,0 +1,40 @@
+<head>
+    <meta charset="utf-8">
+    <title>单选按钮</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-31">
+    <!-- <input type="radio" id="one" value="第一个" v-model="picked">
+    <label for="one">第一个</label>
+    <br>
+    <input type="radio" id="two" value="第二个" v-model="picked">
+    <label for="two">第二个</label> -->
+    <!-- <br>
+    <span>Picked: {{ picked }}</span> -->
+
+    <select v-model="selected">
+        <!-- <option value="">A</option>
+        <option value="">B</option>
+        <option value="">C</option> -->
+        <option v-for="(option,index) in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>结果: {{ selected }}</span>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-31",
+        data: {
+            // picked: '',
+            selected: 'A',
+            options: [
+                {text: 'one', value: 'A'},
+                {text: 'two', value: 'B'},
+                {text: 'three', value: 'C'}
+            ]
+        }
+    })
+</script>

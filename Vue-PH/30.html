@@ -1,0 +1,27 @@
+<head>
+    <meta charset="utf-8">
+    <title>复选框</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- 多个复选框,绑定到同一数组 -->
+<div id="app-30">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app-30",
+        data: {
+            checkedNames: []
+        }
+    })
+</script>
+

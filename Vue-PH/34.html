@@ -1,0 +1,47 @@
+<head>
+    <meta charset="utf-8">
+    <title>监听子组件事件</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-34">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <button-size
+        v-for="(post,index) in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+        v-on:enlarge-text="onEnlargeText"
+        ></button-size>
+    </div>
+</div>
+
+<script>
+    Vue.component('button-size', {
+        props: ['post'],
+        template:`
+        <div>
+            <h3> {{post.title}}</h3>
+            <button v-on:click="$emit('enlarge-text', 0.1)">
+            Enlarge text
+            </button>
+        </div>
+        `
+    })
+
+    var vm = new Vue({
+        el: "#app-34",
+        data: {
+            posts: [
+                {id: 1, title: '11111'},
+                {id: 2, title: '22222'}
+            ],
+            postFontSize: 1
+        },
+        methods: {
+            onEnlargeText: function(enlargeAmount){
+                this.postFontSize += enlargeAmount;
+            }
+        }
+    })
+</script>

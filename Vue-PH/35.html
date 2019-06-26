@@ -1,0 +1,31 @@
+<head>
+    <meta charset="utf-8">
+    <title>在组件上使用v-model</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-35">
+    <custom-input
+    v-model="searchText"
+    ></custom-input>
+</div>
+
+<script>
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+        <input 
+        v-bind:value="value"
+        v-on:input="$emit('input',$event.target.value)"
+        >
+        `
+    })
+
+    new Vue({
+        el: "#app-35",
+        data: {
+            searchText: '11'
+        }
+    })
+</script>

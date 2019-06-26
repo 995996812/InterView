@@ -1,0 +1,28 @@
+<head>
+    <meta charset="utf-8">
+    <title>通过插槽分发内容</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-36">
+    <alert-box>111111</alert-box>
+    
+</div>
+
+<script>
+    
+    Vue.component('alert-box', {
+        // 自定义组件中想包裹数据 需要插入一个插槽标签 slot
+        template: `
+        <div>
+        <strong>Error!</strong>
+        <slot></slot>
+        </div>
+        `
+    })
+
+    new Vue({
+        el: "#app-36"
+    })
+</script>
