@@ -1,0 +1,53 @@
+<head>
+    <meta charset="utf-8">
+    <title>列表的进入/离开过渡</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-47">
+    <button v-on:click="add">Add</button>
+    <button v-on:click="remove">Remove</button>
+    <transition-group tag="p" name="list">
+        <span 
+        v-for="(item,index) in items" 
+        v-bind:key="item"
+        class="list-item"
+        >{{ item }}</span>
+    </transition-group>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-47",
+        data: {
+            items: [1,2,3,4,5,6,7,8,9],
+            nextNum: 10
+        },
+        methods: {
+            randomIndex: function() {
+                return Math.floor(Math.random() * this.items.length)
+            },
+            add: function(){
+                this.items.splice(this.randomIndex(), 0, this.nextNum++)
+            },
+            remove: function() {
+                this.items.splice(this.randomIndex(), 1)
+            }
+        }
+    })
+</script>
+
+<style>
+.list-item {
+    display: inline-block;
+    margin-right: 10px; 
+}
+.list-enter-active, .list-leave-active {
+    transition: all 1s;
+}
+.list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+</style>

@@ -1,0 +1,37 @@
+<head>
+    <meta  charset="utf-8">
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-46">
+    <transition name="component-fade" mode="out-in">
+        <component v-bind:is="view"></component>
+    </transition>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-46",
+        data: {
+            view: 'v-a'
+        },
+        components: {
+            'v-a': {
+                template: '<div>Component A</div>'
+            },
+            'v-b': {
+                template: '<div>Component B</div>'
+            }
+        }
+    })
+</script>
+
+<style>
+    .component-fade-enter-active, .component-fade-leave-active {
+        transition: opacity .3s ease;
+    }
+    .component-fade-enter, .component-fade-leave-to {
+        opacity: 0;
+    }
+</style>
