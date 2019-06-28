@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8">
+    <title>CSS动画</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-43">
+    <button @click="show = !show">toggle</button>
+    <transition name="bounce">
+        <p v-if="show">这是一个非常非常非常长的一段文字,你懂了吗</p>
+    </transition>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-43",
+        data: {
+            show: true
+        }
+    })
+</script>
+
+<style>
+    .bounce-enter-active {
+        animation: bounce-in .5s;
+    }
+    .bounce-leave-active {
+        animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            transform: scale(1.5);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>

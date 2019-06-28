@@ -1,0 +1,40 @@
+<head>
+    <meta charset="utf-8">
+    <title>过渡动画</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-42">
+    <button @click="show = !show">
+        Toogle render
+    </button>
+    <transition name="slide-fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-42",
+        data: {
+            show: true
+        }
+    })
+</script>
+
+<style>
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+}
+</style>
+
+

@@ -1,0 +1,33 @@
+<head>
+    <meta charset="utf-8">
+    <title>解构插槽</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-38">
+    <current-custom>
+        {{ user.name }}
+    </current-custom>
+</div>
+
+<script>
+
+    Vue.component('current-custom', {
+        template: `   
+        <div>
+            <slot></slot>
+        </div>`
+
+    })
+
+    new Vue({
+        el: "#app-38",
+        data: {
+            user: {
+                name: 'jack',
+                age: 10
+            }
+        }
+    })
+</script>

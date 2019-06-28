@@ -1,0 +1,38 @@
+<head>
+    <meta charset="utf-8">
+    <title>单元素/组件的过渡</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-40">
+    <button v-on:click="show = !show">
+        toogle
+    </button>
+    <transition name="fade">
+        <p v-if="show">
+            hello
+        </p>
+    </transition>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-40",
+        data: {
+            show: true
+        }
+    })
+</script>
+
+<style>
+
+.fade-enter-active, .fade-leave-active{
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to{
+    opacity: 0;
+}
+
+</style>

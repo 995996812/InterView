@@ -1,0 +1,40 @@
+<head>
+    <meta charset="utf-8">
+    <title>例子</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-39">
+
+</div>
+    <todo-list v-bind:todos="todos">
+        <template slot="todo" slot-scope="{ todo }">
+            {{todo.text}}
+        </template>
+    </todo-list>
+<script>
+
+    Vue.component('todo-list', {
+        template: `
+        <ul>
+            <li v-for="(todo,index) in filteredTodos" v-bind:key="todo.id">
+                <slot name="todo" v-bind:todo="todo">
+                    {{todo.text}}
+                </slot>
+            </li>
+        </ul>
+        `
+    })
+
+    new Vue({
+        el: "#app-39",
+        data: {
+            filteredTodos: [
+                {id: 1, text: '1111111'},
+                {id: 2, text: '2222222'},
+                {id: 3, text: '3333333'}
+            ]
+        }
+    })
+</script>

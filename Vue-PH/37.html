@@ -6,10 +6,35 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 <div id="app-37">
-
+    <base-layout>
+        <template v-slot:header>
+            <h1>这是标题</h1>
+        </template>
+        <p>内容1</p>
+        <p>内容2</p>
+        <template v-slot:footer>
+            <p>这是结尾</p>
+        </template>
+    </base-layout>
 </div>
 
 <script>
+    
+    Vue.component("base-layout", {
+        template: `    
+        <div>
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>`
+    })
+
     new Vue({
         el: "#app-37"
     })
