@@ -1,0 +1,10 @@
+{
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"newFeature": true
+	},
+	"appid": "wxa6c88e6c31d8c1f4",
+	"projectname": "SmallMall",
+	"condition": {}
+}

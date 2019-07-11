@@ -1,0 +1,21 @@
+<head>
+    <meta charset="utf-8">
+    <title>自定义指令</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-58">
+    <div v-demo="{ color: 'white', text: 'hello!' }"></div>
+</div>
+
+<script>
+    Vue.directive("demo", function(el, binding){
+        console.log(binding.value.color)
+        console.log(binding.value.text)
+    })
+
+    new Vue({
+        el: "#app-58"
+    })
+</script>

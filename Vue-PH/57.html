@@ -1,0 +1,31 @@
+<head>
+    <meta charset="utf-8">
+    <title>动态指令参数</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="baseexample" style="height: 1000px">
+    <p>Scroll down the page</p>
+    <p v-pin:[direction]="customMargin">Stick me 200px from the top of the page</p>
+</div>
+
+<script>
+    Vue.directive('pin', {
+        bind: function(el, binding, vnode){
+            el.style.position = 'fixed'
+            var s = (binding.arg == 'left' ? 'left' : 'top')
+            el.style[s] = binding.value + 'px'
+        }
+    })
+
+   var vm =  new Vue({
+        el: "#baseexample",
+        data () {
+            return {
+                direction: 'left',
+                customMargin: '300'
+            }
+        }
+    })
+</script>

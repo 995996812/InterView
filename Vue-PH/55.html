@@ -1,0 +1,36 @@
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-55" class="fat">
+    <h3>向下滚动到这部分↓</h3>
+    <p v-pin:[direction]="200">我被钉在页面左边200px处。</p>
+</div>
+
+<script>
+    Vue.directive('pin', {
+        bind: function(el, binding, vnode){
+            el.style.position = 'fixed'
+            var s = (binding.arg = 'left' ? 'left' : 'top')
+            el.style[s] = binding.value + 'px'
+        }
+    })
+
+    new Vue({
+        el: "#app-55",
+        data () {
+            return {
+                direction: 'top'
+            }
+        }
+    })
+</script>
+
+<style>
+.fat{
+    height: 10000px;
+}
+</style>

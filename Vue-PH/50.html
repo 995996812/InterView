@@ -1,0 +1,80 @@
+<head>
+    <meta charset="utf-8">
+    <title>列表的交错过渡</title>
+    <!-- 通过 data 属性与 JavaScript 通信 ，就可以实现列表的交错过渡： -->
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+
+<div id="app-50">
+    <input v-model="query">
+    <transition-group 
+    tag="ul" 
+    name="staggered-fade"
+    v-bind:css="false"
+    v-on:before-enter="beforeEnter"
+    v-on:enter="enter"
+    v-on:leave="leave"
+    >
+        <li
+        v-for="(item,index) in computedList"
+        v-bind:key="item.msg"
+        v-bind:data-index="index"
+        >
+        {{ item.msg }}
+        </li>
+    </transition-group>
+</div>
+
+<script>
+    new Vue({
+        el: "#app-50",
+        data: {
+            query: '',
+            list: [
+                { msg: '111' },
+                { msg: '222' },
+                { msg: '333' }
+            ]
+        },
+        computed: {
+            computedList: function() {
+                var vm = this
+                return this.list.filter(function(item){
+                    return item.msg.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+                 })
+            }
+        },
+        methods: {
+            beforeEnter: function(el){
+                el.style.opacity = 0
+                el.style.height = 0
+            },
+            enter: function (el, done){
+                var delay = el.dataset.index * 150
+                setTimeout(function() {
+                    Velocity(
+                        el,
+                        { opacity: 1, height: '1.6em' },
+                        { complete: done }
+                    )
+                }, delay)
+            },
+            leave: function(el, done){
+                var delay = el.dataset.index * 150
+                setTimeout(function() {
+                    Velocity(
+                        el,
+                        { opacity: 0, height: 0 },
+                        { complete: done }
+                    )
+                }, delay)
+            }
+        }
+    })
+</script>
+
+<style>
+
+</style>
