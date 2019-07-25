@@ -1,0 +1,75 @@
+<head>
+    <meta charset="utf-8">
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<div id="app-64">
+    <smart-list :items=items  :isOrdered=isOrdered></smart-list>
+</div>
+
+<script>
+    var EmptyList = { }
+    var TableList = { }
+    var OrderedList = { }
+    var UnorderedList = { }
+
+   Vue.component('smart-list', {
+        functional: true,
+        props: {
+            items: {
+                type: Array,
+                required: true
+            },
+            isOrdered: Boolean
+        },
+        render: function (createElement, context) {
+            function appropriateListComponent () {
+                var items = context.props.items
+
+                console.log(context.props.items)
+
+                if (items.length === 0){
+
+                    console.log('11111')
+
+                    return EmptyList
+                }             
+                if (typeof items[0] === 'object'){
+                    console.log('22222')
+                    return TableList
+                }   
+                if (context.props.isOrdered) {
+
+                    console.log('333333')
+
+                    return OrderedList
+                }       
+                console.log('4444')
+                return UnorderedList
+            }
+
+            return createElement(
+                appropriateListComponent(),
+                context.data,
+                context.children
+            )
+        }
+    })
+
+  
+    new Vue({
+        el: "#app-64",
+        data () {
+            return {
+                items: [
+                    Object(1)
+                ],
+                isOrdered: false
+            }
+        }
+    })
+
+    
+</script>
+

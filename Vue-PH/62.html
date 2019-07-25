@@ -1,0 +1,59 @@
+<head>
+    <meta charset="utf-8">
+    <title>完整示例</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<div id="app-62">
+    <anchored-heding :level= '2' >
+        <ul>
+            <li v-for="(item,index) in items"> {{ item }} </li>
+        </ul>
+    </anchored-heding>
+</div>
+<script>
+    var getChildrenTextContent = function(children){
+        return children.map(function(node){
+            return node.children ? getChildrenTextContent(node.children) : node.text
+        }).join('')
+    }
+
+    Vue.component('anchored-heding', {
+        render: function (createElement) {
+            var headingId = getChildrenTextContent(this.$slots.default)
+                .toLowerCase()
+                .replace(/\W+/g, '-')
+                .replace(/(^-|-$)/g, '')
+            return createElement(
+                'h' + this.level,
+                [
+                    createElement('a', {
+                        attrs: {
+                            name: headingId,
+                            href: '#' + headingId
+                        }
+                    },this.$slots.default)
+                ]
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    })
+
+    new Vue({
+        el: "#app-62",
+        data () {
+            return {
+                items: [
+                    '1111',
+                    '2222',
+                    '3333'
+                ]
+            }
+        }
+    })
+</script>
